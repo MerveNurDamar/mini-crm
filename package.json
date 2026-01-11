@@ -7,19 +7,29 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "jest --runInBand",
-    "migrate": "sequelize db:migrate"
+    "test:coverage": "jest --runInBand --coverage",
+    "migrate": "sequelize db:migrate",
+    "etl:customers": "node scripts/etl/import_customers.js --file data/customers.xlsx",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.0",
     "express": "^4.19.0",
-    "sequelize": "^6.37.0",
     "pg": "^8.11.0",
     "pg-hstore": "^2.3.4",
-    "dotenv": "^16.4.0",
-    "winston": "^3.11.0"
+    "sequelize": "^6.37.0",
+    "winston": "^3.11.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "jest": "^29.7.0",
-    "supertest": "^6.3.4",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "prettier": "^3.3.1",
+    "sqlite3": "^5.1.7",
+    "supertest": "^6.3.4"
   }
 }

@@ -1,11 +1,15 @@
 const request = require('supertest');
 const app = require('../src/app');
-const { sequelize, Customer } = require('../src/models');
+const { sequelize } = require('../src/models');
 
 // Not: test setup/teardown eksik, bazı testler flaky
 describe('Customers API', () => {
   beforeAll(async () => {
     await sequelize.sync({ force: true }); // migrate yerine sync kullanılmış
+  });
+
+  afterAll(async () => {
+    await sequelize.close();
   });
 
   test('GET /api/customers initially returns empty array', async () => {
@@ -18,7 +22,7 @@ describe('Customers API', () => {
   test('POST /api/customers creates customer', async () => {
     const res = await request(app)
       .post('/api/customers')
-      .send({ firstName: 'Test', lastName: 'User' }); // phone/email yok
+      .send({ firstName: 'Test', lastName: 'User', phone: '5551112233' });
     expect(res.statusCode).toBe(201);
     expect(res.body.id).toBeDefined();
   });
@@ -26,6 +30,6 @@ describe('Customers API', () => {
   // TODO: Bu test bazen patlıyor, nedenine bakılmadı
   test('GET /api/customers returns at least one customer', async () => {
     const res = await request(app).get('/api/customers');
-    expect(res.body.length).toBeGreaterThan(1); // bazen 1 geliyor
+    expect(res.body.length).toBeGreaterThan(0);
   });
 });
