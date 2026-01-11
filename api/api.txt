@@ -1,7 +1,15 @@
-GET /api/customers – kısmen çalışıyor
+GET /api/customers – listeleme
+GET /api/customers/:id – detay
+POST /api/customers – olusturma
+PUT /api/customers/:id – guncelleme
+DELETE /api/customers/:id – silme
 
-POST /api/customers – temel haliyle çalışıyor
+GET /api/orders – listeleme
+GET /api/orders/:id – detay
+POST /api/orders – olusturma
 
-GET /api/orders – basit listeleme
-
-Diğer uçlar planlanmıştır ama henüz yazılmamıştır.
+GET /api/products – listeleme
+GET /api/products/:id – detay
+POST /api/products – olusturma
+PUT /api/products/:id – guncelleme
+DELETE /api/products/:id – silme
