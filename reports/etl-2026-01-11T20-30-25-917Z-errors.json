@@ -1,0 +1,46 @@
+[
+  {
+    "row": {
+      "Ad": "",
+      "Soyad": "Dogan",
+      "Telefon": "532—111—2233",
+      "Email": "dogan@mail.com",
+      "Adres": "Bursa",
+      "Not": "Adi bos"
+    },
+    "reason": "missing first_name"
+  },
+  {
+    "row": {
+      "Ad": "Ceren",
+      "Soyad": "",
+      "Telefon": "+90 5321112233",
+      "Email": "ceren@@mail.com",
+      "Adres": "Istanbul",
+      "Not": "Email hatali"
+    },
+    "reason": "invalid email format"
+  },
+  {
+    "row": {
+      "Ad": "Caner",
+      "Soyad": "Tas",
+      "Telefon": "0532 111",
+      "Email": "caner.tas@mail.com",
+      "Adres": "-",
+      "Not": "Telefon eksik"
+    },
+    "reason": "invalid phone format"
+  },
+  {
+    "row": {
+      "Ad": "Muhammed",
+      "Soyad": "Ak",
+      "Telefon": "",
+      "Email": "",
+      "Adres": "Istanbul",
+      "Not": "Email yok"
+    },
+    "reason": "missing phone and email"
+  }
+]
