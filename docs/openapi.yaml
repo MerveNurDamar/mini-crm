@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: MiniCRM API
+  version: 0.1.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/customers:
+    get:
+      summary: List customers
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '201':
+          description: Created
+  /api/customers/{id}:
+    get:
+      summary: Get customer by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update customer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerUpdate'
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Delete customer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  /api/orders:
+    get:
+      summary: List orders
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '201':
+          description: Created
+  /api/orders/{id}:
+    get:
+      summary: Get order by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    CustomerCreate:
+      type: object
+      required: [firstName]
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        note:
+          type: string
+    CustomerUpdate:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        note:
+          type: string
+    OrderCreate:
+      type: object
+      required: [items]
+      properties:
+        customerId:
+          type: integer
+        customer:
+          $ref: '#/components/schemas/CustomerCreate'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemCreate'
+        totalAmount:
+          type: number
+    OrderItemCreate:
+      type: object
+      required: [productId, qty, unitPrice]
+      properties:
+        productId:
+          type: integer
+        qty:
+          type: integer
+        unitPrice:
+          type: number
