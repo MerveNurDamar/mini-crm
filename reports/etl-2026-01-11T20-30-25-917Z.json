@@ -1,0 +1,13 @@
+{
+  "total": 15,
+  "imported": 6,
+  "skipped": 5,
+  "errors": 4,
+  "duplicates": 3,
+  "errorRows": [
+    "missing first_name",
+    "missing phone and email",
+    "invalid email format",
+    "invalid phone format"
+  ]
+}
